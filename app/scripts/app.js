@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc overview
- * @name stockDogApp
+ * @name bower
  * @description
  * # stockDogApp
  *
@@ -15,7 +15,8 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'mgcrea.ngStrap'
   ])
   .config(function ($routeProvider) {
     $routeProvider
