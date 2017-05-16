@@ -20,6 +20,10 @@ angular
   ])
   .config(function ($routeProvider) {
     $routeProvider
+      .when('/dashboard', {
+        templateUrl: 'views/dashboard.html',
+        controller: 'DashboardCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
