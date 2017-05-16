@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc overview
- * @name bower
+ * @name stockDogApp
  * @description
  * # stockDogApp
  *
@@ -20,5 +20,7 @@ angular
   ])
   .config(function ($routeProvider) {
     $routeProvider
-      
+      .otherwise({
+        redirectTo: '/'
+      });
   });

@@ -9,7 +9,7 @@
 angular.module('stockDogApp')
   .directive('stkWatchlistPanel', function ($location, $modal, WatchlistService) {
     return {
-      template: 'views/templates/watchlist-panel.html',
+      templateUrl: 'views/templates/watchlist-panel.html',
       restrict: 'E',
       scope: {},
       link: function ($scope) {
@@ -17,7 +17,8 @@ angular.module('stockDogApp')
 
         var addListModal = $modal({
           scope: $scope,
-          template: 'views/templates/addlist-modal.html'
+          template: 'views/templates/addlist-modal.html',
+          show: false
         });
 
         $scope.watchlists = WatchlistService.query();

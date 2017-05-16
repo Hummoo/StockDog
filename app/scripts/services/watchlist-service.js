@@ -23,18 +23,18 @@ angular.module('stockDogApp')
     var saveModel = function() {
       localStorage['StockDog.watchlists'] = JSON.stringify(Model.watchlists);
       localStorage['StockDog.nextId'] = Model.nextId;
-    }
+    };
 
     var findById = function(listId) {
       return _.find(Model.watchlists, function(watchlists) {
-        return watchlists.id === parseInt(listId);
+        return watchlist.id === parseInt(listId);
       });
     };
 
     this.query = function(listId) {
       if(listId) {
         return findById(listId);
-      } esle {
+      } else {
         return Model.watchlists;
       }
     };
