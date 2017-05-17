@@ -23,23 +23,23 @@ angular.module('stockDogApp')
 
         $scope.watchlists = WatchlistService.query();
 
-        $scope.showModal = function() {
+        $scope.showModal = function () {
           addListModal.$promise.then(addListModal.show);
         };
 
-        $scope.createList = function() {
+        $scope.createList = function () {
           WatchlistService.save($scope.watchlist);
           addListModal.hide();
           $scope.watchlist = {};
         };
 
-        $scope.deleteList = function(list) {
+        $scope.deleteList = function (list) {
           WatchlistService.remove(list);
           $location.path('/');
         };
 
         $scope.currentList = $routeParams.listId;
-        $scope.gotoList = function(listId) {
+        $scope.gotoList = function (listId) {
           $location.path('watchlist/' + listId);
         };
       }
