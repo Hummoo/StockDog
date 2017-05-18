@@ -9,6 +9,7 @@
  */
 angular.module('stockDogApp')
   .service('WatchlistService', function WatchlistService() {
+    // Augment Stocks with additional helper functions
     var StockModel = {
       save: function () {
         var watchlist = findById(this.listId);
@@ -17,6 +18,7 @@ angular.module('stockDogApp')
       }
     };
 
+    // Augment Watchlists with additional helper functions
     var WatchlistModel = {
       addStock: function (stock) {
         var existingStock = _.find(this.stocks, function (s) {
@@ -44,11 +46,7 @@ angular.module('stockDogApp')
           calcs.marketValue += stock.marketValue;
           calcs.dayChange += stock.dayChange;
           return calcs;
-        }, {
-          shares: 0,
-          marketValue: 0,
-          dayChange: 0
-        });
+        }, { shares: 0, marketValue: 0, dayChange: 0 });
 
         this.shares = calcs.shares;
         this.marketValue = calcs.marketValue;
@@ -56,6 +54,7 @@ angular.module('stockDogApp')
       }
     };
 
+    // Helper: Load watchlists from localStorage
     var loadModel = function () {
       var model = {
         watchlists: localStorage['StockDog.watchlists'] ?
@@ -72,17 +71,20 @@ angular.module('stockDogApp')
       return model;
     };
 
+    // Helper: Save watchlists to localStorage
     var saveModel = function () {
       localStorage['StockDog.watchlists'] = JSON.stringify(Model.watchlists);
       localStorage['StockDog.nextId'] = Model.nextId;
     };
 
+    // Helper: Use lodash to find a watchlist with given ID
     var findById = function (listId) {
       return _.find(Model.watchlists, function (watchlist) {
         return watchlist.id === parseInt(listId);
       });
     };
 
+    // Return all watchlists or find by given ID
     this.query = function (listId) {
       if (listId) {
         return findById(listId);
@@ -91,6 +93,7 @@ angular.module('stockDogApp')
       }
     };
 
+    // Save a new watchlist to watchlists model
     this.save = function (watchlist) {
       watchlist.id = Model.nextId++;
       watchlist.stocks = [];
@@ -99,6 +102,7 @@ angular.module('stockDogApp')
       saveModel();
     };
 
+    // Remove given watchlist from watchlists model
     this.remove = function (watchlist) {
       _.remove(Model.watchlists, function (list) {
         return list.id === watchlist.id;
@@ -106,5 +110,6 @@ angular.module('stockDogApp')
       saveModel();
     };
 
+    // Initialize Model for this singleton service
     var Model = loadModel();
   });
