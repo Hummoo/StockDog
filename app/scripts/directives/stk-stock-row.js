@@ -35,10 +35,8 @@ angular.module('stockDogApp')
 
         // Watch for changes in shares and recalculate fields
         $scope.$watch('stock.shares', function () {
-          $scope.stock.marketValue = $scope.stock.shares *
-            $scope.stock.lastPrice;
-          $scope.stock.dayChange = $scope.stock.shares *
-            parseFloat($scope.stock.change);
+          $scope.stock.marketValue = $scope.stock.shares * $scope.stock.lastPrice;
+          $scope.stock.dayChange = $scope.stock.shares * parseFloat($scope.stock.change);
           $scope.stock.save();
         });
       }
