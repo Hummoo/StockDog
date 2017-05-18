@@ -1,12 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc service
- * @name stockDogApp.WatchlistService
- * @description
- * # WatchlistService
- * Service in the stockDogApp.
- */
 angular.module('stockDogApp')
   .service('WatchlistService', function WatchlistService() {
     // Augment Stocks with additional helper functions
@@ -57,10 +50,8 @@ angular.module('stockDogApp')
     // Helper: Load watchlists from localStorage
     var loadModel = function () {
       var model = {
-        watchlists: localStorage['StockDog.watchlists'] ?
-          JSON.parse(localStorage['StockDog.watchlists']) : [],
-        nextId: localStorage['StockDog.nextId'] ?
-          parseInt(localStorage['StockDog.nextId']) : 0
+        watchlists: localStorage['StockDog.watchlists'] ? JSON.parse(localStorage['StockDog.watchlists']) : [],
+        nextId: localStorage['StockDog.nextId'] ? parseInt(localStorage['StockDog.nextId']) : 0
       };
       _.each(model.watchlists, function (watchlist) {
         _.extend(watchlist, WatchlistModel);
