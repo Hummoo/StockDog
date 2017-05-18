@@ -1,4 +1,4 @@
-// Generated on 2017-05-14 using generator-angular 0.9.8
+// Generated on 2014-09-17 using generator-angular 0.9.8
 'use strict';
 
 // # Globbing
@@ -56,7 +56,7 @@ module.exports = function (grunt) {
           livereload: '<%= connect.options.livereload %>'
         },
         files: [
-          '<%= yeoman.app %>/{,*/}*.html',
+          '<%= yeoman.app %>/**/*.html',
           '.tmp/styles/{,*/}*.css',
           '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
